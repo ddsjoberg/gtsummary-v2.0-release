@@ -1,5 +1,7 @@
 ---
 title: "Release Notes for gtsummary v2.0"
+date: last-modified
+author: Daniel D. Sjoberg
 format:
   html:
     toc: true
@@ -18,7 +20,7 @@ The new release is a near re-write of every line of code in the package.
 The re-write brings consistency to the internals of the package and efficiency gains as well.
 
 The **goal of this post** is to let you know about the new release and discuss some of the big changes, and encourage you to try it out and **help us find any issues we may have missed**.
-Please, take a moment to install the dev version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an unknown regression in functionality! 
+Please, take a moment to install the dev version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an undocumented regression in functionality! 
 
 ```{r}
 #| message: false
@@ -103,9 +105,10 @@ Previously, when printing a gtsummary table in a Quarto or R markdown document, 
 The {gt} package has matured and provides lovely tables for nearly all output types, and we have now made {gt} the default table drawing tool for all gtsummary tables.
 The other output types are still supported.
 
-## Call to Action
+## Our Request
 
-I'll repeat our request to the users: please, take a moment to install the development version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an unknown regression in functionality!
+I'll repeat our request to the users: please, take a moment to install the development version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an undocumented regression in functionality!
 
 Please also note that we're not 100% done with the updates intended for the v2.0 release.
-Here's the list of items still pending and we're also still working on bolstering unit tests: [https://github.com/ddsjoberg/gtsummary/milestone/17](https://github.com/ddsjoberg/gtsummary/milestone/17)
+Here's the list of pending items; we're also still working on bolstering unit tests: [https://github.com/ddsjoberg/gtsummary/milestone/17](https://github.com/ddsjoberg/gtsummary/milestone/17)
+
