@@ -112,3 +112,9 @@ I'll repeat our request to the users: please, take a moment to install the devel
 Please also note that we're not 100% done with the updates intended for the v2.0 release.
 Here's the list of pending items; we're also still working on bolstering unit tests: [https://github.com/ddsjoberg/gtsummary/milestone/17](https://github.com/ddsjoberg/gtsummary/milestone/17)
 
+Some items I think are at higher risk for an unintended change.
+
+- If you use the themes, did we neglect to apply any of the theme elements to the results?
+
+- If you use the language translations, can you check we haven't forgotten to translate a word/phrase?
+
