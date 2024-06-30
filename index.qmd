@@ -1,0 +1,101 @@
+---
+title: "Release Notes for gtsummary v2.0"
+format: html
+editor: visual
+theme: flatly
+embed-resources: true
+standalone: true
+---
+
+<a href='https://github.com/ddsjoberg/gtsummary'><img src='https://raw.githubusercontent.com/ddsjoberg/gtsummary/main/man/figures/logo.png' align="right" height="190" /></a>
+
+We are excited to announce the coming release of gtsummary 2.0.
+The official release is still a number of weeks away.
+The new release is a near re-write of every line of code in the package.
+The re-write brings consistency to the internals of the package and efficiency gains as well.
+
+The **goal of this post** is to let you know about the new release and discuss some of the big changes, and encourage you to try it out and **help us find any issues we may have missed**.
+Please, please, take a moment to install the dev version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an unknown regression in functionality! 
+
+```{r}
+#| message: false
+pak::pak("ddsjoberg/gtsummary")
+```
+
+## What's Changed?
+
+Visit the [development version of the website](https://www.danieldsjoberg.com/gtsummary/dev/news/index.html) for a full listing of changes. 
+This release includes significant internal changes, and fewer user-facing changes.
+However, the internal updates we've made pave the way for future updates, and I am excited about the year ahead for the package.
+
+#### Structure
+
+The major change in this release of the package is the structure of how results are calculated and stored---invisible to the vast majority of users.
+The updated format provides a unified structure to all gtsummary functions, which makes it must simpler, and trivial in some cases, to build on top of the existing functions or add new functions.
+
+For those interested, results are now stored in a format compatible with the emerging CDISC Analysis Results Standard.
+From the standard, we are using the Analysis Results Datasets (ARDs).
+
+#### Other Changes
+
+First, let's load the development version of the package.
+
+```{r}
+#| message: false
+library(gtsummary)
+packageVersion("gtsummary")
+# theme_gtsummary_compact()
+```
+
+**Transposed Tables**
+
+Users often requested that the results of `tbl_summary()` be 'transposed' with the results across the columns.
+That is now possible with the new function `tbl_wide_summary()` (which, by the way, was a super simple addition due to the new structure).
+
+:::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+tbl_wide_summary(
+  trial, 
+  include = c(response, grade),
+  statistic = c("{n}", "{p}")
+)
+```
+:::
+
+::: {.column width="45%"}
+```{r}
+tbl_wide_summary(
+  trial, 
+  include = c(age, marker),
+  statistic = c("{median}", "{p25}, {p75}")
+)
+```
+:::
+:::: 
+
+**Easier to specify changes to a single statistic**
+
+Previously, if I wanted a single statistic to be reported to additional levels of precision, I would need to specify the precision of every summary statistic for a variable.
+Now, we can simple update the one statistic we're interested in.
+
+```{r}
+tbl_summary(
+  trial, 
+  include = age,
+  type = all_continuous() ~ "continuous2",
+  statistic = all_continuous() ~ c("{mean} ({sd})",
+                                   "{median} ({p25}, {p75})",
+                                   "{min}, {max}"),
+  digits = age ~ list(sd = 2), # show the SD to 2 decimal places
+  missing = "no"
+)
+```
+
+**Default Printer**
+
+The {gt} package is now the default printer for all Quarto and R markdown output formats.
+Previously, when printing a gtsummary table in a Quarto or R markdown document, we would detect the output format and convert to gt, flextable, or kable to provide the best-looking table.
+The {gt} package has matured and provides lovely tables for nearly all output types, and we have now made {gt} the default table drawing tool for all gtsummary tables.
+The other output types are still supported.
