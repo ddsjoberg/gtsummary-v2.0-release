@@ -118,3 +118,4 @@ Some items I think are at higher risk for an unintended change.
 
 - If you use the language translations, can you check we haven't forgotten to translate a word/phrase?
 
+- Also, if you see an unintelligible error message, please also report it. We want all messages to be clear for the users.
