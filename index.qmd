@@ -41,6 +41,8 @@ The updated format provides a unified structure to all gtsummary functions, whic
 For those interested, results are now stored in a format compatible with the emerging CDISC Analysis Results Standard.
 From the standard, we are using the Analysis Results Datasets (ARDs).
 
+A number of package dependencies have been removed in this release, and calculations that require outside packages have been consolidated in a new package called [{cardx}](https://insightsengineering.github.io/cardx/main/). The {cardx} is a suggested dependency of the package.
+
 #### Other Changes
 
 First, let's load the development version of the package.
