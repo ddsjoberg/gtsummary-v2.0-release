@@ -89,7 +89,7 @@ Previously, when printing a gtsummary table in a Quarto or R markdown document, 
 The {gt} package has matured and provides lovely tables for nearly all output types, and we have now made {gt} the default table drawing tool for all gtsummary tables.
 The other output types are still supported.
 
-**Dichotomous summaries in `tbl_summary()**
+**Dichotomous summaries in `tbl_summary()`**
 
 Previously, in a `tbl_summary()` variables that were `c(0, 1)`, `c("no", "yes")`, `c("No", "Yes")`, and `c("NO", "YES")` would default to a dichotomous summary with the `1` and `yes` level being shown in the table.
 This would occur even in the case when, for example, only `0` was observed.
@@ -113,6 +113,14 @@ tbl_summary(
   missing = "no"
 )
 ```
+
+**Quantile Calculations**
+
+In `tbl_summary()`, continuous summaries can be summarized with quantiles using shortcuts `'{p##}'`, e.g. `'{p25}, {p75}'` for the interquartile range.
+Previously, these quantiles were calculated with `quantile(x, type = 7)` and we now use `type = 2`.
+The results are very similar; the type 2 method matches SAS's calculation and now I don't need to hear complaints the results do not match. 🤷
+
+In `tbl_svysummary()`, we are now using the re-factored `survey::svyquantile()` introduced in {survey} v4.1.
 
 ## Our Request
 
