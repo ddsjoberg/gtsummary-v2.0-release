@@ -7,7 +7,7 @@ format:
     toc: true
     toc-depth: 4
 editor: source
-theme: lux
+theme: journal
 embed-resources: true
 standalone: true
 ---
