@@ -35,7 +35,7 @@ However, the internal updates we've made pave the way for future updates, and I 
 
 #### Structure
 
-The major change in this release of the package is the structure of how results are calculated and stored---invisible to the vast majority of users.
+The major change in this release of the package is the structure of how results are calculated and stored---not visible to the vast majority of users.
 The updated format provides a unified structure to all gtsummary functions, which makes it much simpler, and trivial in some cases, to build on top of the existing functions or add new functions.
 
 For those interested, results are now stored in a format compatible with the emerging CDISC Analysis Results Standard.
@@ -51,7 +51,6 @@ First, let's load the development version of the package.
 #| message: false
 library(gtsummary)
 packageVersion("gtsummary")
-# theme_gtsummary_compact()
 ```
 
 **Transposed Tables**
