@@ -14,22 +14,20 @@ standalone: true
 
 <a href='https://github.com/ddsjoberg/gtsummary'><img src='https://raw.githubusercontent.com/ddsjoberg/gtsummary/main/man/figures/logo.png' align="right" height="190" /></a>
 
-We are excited to announce the coming release of gtsummary 2.0.
-The official release is still a number of weeks away.
+We are excited to announce the release of gtsummary 2.0.
 The new release is a near re-write of every line of code in the package.
 The re-write brings consistency to the internals of the package and efficiency gains as well.
 
-The **goal of this post** is to let you know about the new release and discuss some of the big changes, and encourage you to try it out and **help us find any issues we may have missed**.
-Please, take a moment to install the dev version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an undocumented regression in functionality! 
+The **goal of this post** is to let you know about the new release and discuss some of the big changes, and encourage you to try it out.
 
 ```{r}
 #| message: false
-pak::pak("ddsjoberg/gtsummary")
+pak::pak("gtsummary")
 ```
 
 ## What's Changed?
 
-Visit the [development version of the website](https://www.danieldsjoberg.com/gtsummary/dev/news/index.html) for a full listing of changes. 
+Visit the [the website](https://www.danieldsjoberg.com/gtsummary/news/index.html) for a full listing of changes. 
 This release includes significant internal changes, and fewer user-facing changes.
 However, the internal updates we've made pave the way for future updates, and I am excited about the year ahead for the package.
 
@@ -41,11 +39,12 @@ The updated format provides a unified structure to all gtsummary functions, whic
 For those interested, results are now stored in a format compatible with the emerging CDISC Analysis Results Standard.
 From the standard, we are using the Analysis Results Datasets (ARDs).
 
-A number of package dependencies have been removed in this release, and calculations that require outside packages have been consolidated in a new package called [{cardx}](https://insightsengineering.github.io/cardx/main/). The {cardx} is a suggested dependency of the package.
+A number of package dependencies have been removed in this release, and calculations that require outside packages have been consolidated in a new package called [{cardx}](https://insightsengineering.github.io/cardx/main/).
+The {cardx} package is a suggested dependency of the package.
 
 #### Other Changes
 
-First, let's load the development version of the package.
+First, let's load the package.
 
 ```{r}
 #| message: false
@@ -120,18 +119,3 @@ Previously, these quantiles were calculated with `quantile(x, type = 7)` and we 
 The results are very similar; the type 2 method matches SAS's calculation and now I don't need to hear complaints the results do not match. 🤷
 
 In `tbl_svysummary()`, we are now using the re-factored `survey::svyquantile()` introduced in {survey} v4.1.
-
-## Our Request
-
-I'll repeat our request to the users: please, take a moment to install the development version, give it a try, and [post a GitHub Issue](https://github.com/ddsjoberg/gtsummary/issues/new/choose) if you discover an undocumented regression in functionality!
-
-Please also note that we're not 100% done with the updates intended for the v2.0 release.
-Here's the list of pending items; we're also still working on bolstering unit tests: [https://github.com/ddsjoberg/gtsummary/milestone/17](https://github.com/ddsjoberg/gtsummary/milestone/17)
-
-Some items I think are at higher risk for an unintended change.
-
-- If you use the themes, did we neglect to apply any of the theme elements to the results?
-
-- If you use the language translations, can you check we haven't forgotten to translate a word/phrase?
-
-- Also, if you see an unintelligible error message, please also report it. We want all messages to be clear for the users.
